@@ -1,6 +1,5 @@
 package app;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import misc.Misc;
 import misc.Vector2d;
 
@@ -82,7 +81,6 @@ public class Point {
      *
      * @return название множества
      */
-    @JsonIgnore
     public String getSetName() {
         return switch (pointSet) {
             case FIRST_SET -> "Первое множество";
