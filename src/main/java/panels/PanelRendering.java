@@ -73,7 +73,9 @@ public class PanelRendering extends GridPanel {
      */
     @Override
     public void accept(Event e) {
+        // вызов обработчика предка
         super.accept(e);
+        // если событие - это клик мышью
         if (e instanceof EventMouseButton ee) {
             // если последнее положение мыши сохранено и курсор был внутри
             if (lastMove != null && lastInside) {
