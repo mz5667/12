@@ -1,5 +1,9 @@
 package misc;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 /**
@@ -50,10 +54,10 @@ public class CoordinateSystem2d {
      * @param min минимальные координаты
      * @param max максимальные координаты
      */
-    public CoordinateSystem2d(Vector2d min, Vector2d max) {
+    @JsonCreator
+    public CoordinateSystem2d(@JsonProperty("min") Vector2d min, @JsonProperty("max") Vector2d max) {
         this(min.x, min.y, max.x - min.x, max.y - min.y);
     }
-
 
     /**
      * Задать новые границы
@@ -89,7 +93,6 @@ public class CoordinateSystem2d {
     public boolean checkCoords(Vector2d coords) {
         return coords.x >= min.x && coords.y >= min.y && coords.x <= max.x && coords.y <= max.y;
     }
-
     /**
      * Проверить, попадают ли координаты в границы СК
      *
