@@ -23,6 +23,7 @@ import static app.Colors.*;
  * Панель управления
  */
 public class PanelControl extends GridPanel {
+    private final Button solve;
     /**
      * Текст задания
      */
@@ -173,6 +174,13 @@ public class PanelControl extends GridPanel {
                 6, 7, 3, 6, 3, 1, "Решить",
                 true, true);
         solve.setOnClick(() -> {
+            if (!PanelRendering.task.isSolved()) {
+                PanelRendering.task.solve();
+                solve.text = "Сбросить";
+            } else {
+                cancelTask();
+            }
+            window.requestFrame();
             PanelRendering.task.solve();
         });
         buttons.add(solve);
